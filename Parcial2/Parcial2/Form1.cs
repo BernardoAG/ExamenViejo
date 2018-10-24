@@ -19,6 +19,7 @@ namespace Parcial2
 
         private GestorBD.GestorBD GestorBDAcc;
         string cadSql;
+        DataSet dsDist = new DataSet();
         DataSet dsPedido = new DataSet();
         DataSet dsPedidoLibro = new DataSet();
         Varios.Comunes comunes = new Varios.Comunes();
@@ -43,16 +44,26 @@ namespace Parcial2
             cadSql = "select * from PedidoLibro where idPed="+comboBox1.SelectedItem.ToString();                         //Consulta.
             GestorBDAcc.consBD(cadSql, dsPedidoLibro, "PedidoLibro");           //Se ejecuta.
             dataGridView1.DataSource = dsPedidoLibro.Tables["PedidoLibro"];        //Muestra resultados.
+
+            //2- Obtiene datos de las materias.
+            cadSql = "select * from Distribuidor d, Pedido p where idPed=" + comboBox1.SelectedItem.ToString()+" and p.rfcDis = d.rfcDis";                         //Consulta.
+            GestorBDAcc.consBD(cadSql, dsDist, "Distribuidor");           //Se ejecuta.
+            dataGridView2.DataSource = dsDist.Tables["Distribuidor"];        //Muestra resultados.
+
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int folio;
+            int folio, idLib;
             DialogResult botón;
-            String fecha;
+            String fecha, valorF;
 
             //Toma el folio de la calificación seleccionada en el data grid.
             folio = Convert.ToInt16(dataGridView1["idPed", dataGridView1.CurrentRow.Index].Value);
+            idLib = Convert.ToInt16(dataGridView1["idLib", dataGridView1.CurrentRow.Index].Value);
+            valorF = dataGridView1["fechaEnt", dataGridView1.CurrentRow.Index].Value.ToString();
             botón = MessageBox.Show("¿Modificaa el registro con idPed = " + folio.ToString(),
               "Eliminación", MessageBoxButtons.YesNo);
             //Construye la fecha para el formato de Oracle.
@@ -62,12 +73,21 @@ namespace Parcial2
             //Si se selecciona el botón Yes, del MessageBox, modifica el registro asociado.
             if (botón == DialogResult.Yes)
             {
-                //Construye la cadena de mod y la envía para su ejecución.
-                cadSql = "update PedidoLibro set fechaPed = "+fecha+" where idPed = " + folio;
-                if (GestorBDAcc.cambiaBD(cadSql) == OK)
-                    MessageBox.Show("Se modifico el registro del folio " + folio + " exitosamente");
+                if (valorF.ToString().Equals(""))
+                {
+                    //Construye la cadena de mod y la envía para su ejecución.
+                    cadSql = "update PedidoLibro set fechaEnt = " + fecha + " where idPed = " + folio + " and idLib =" + idLib;
+                    if (GestorBDAcc.cambiaBD(cadSql) == OK)
+                        MessageBox.Show("Se modifico el registro del folio " + folio + " exitosamente");
+                    else
+                        MessageBox.Show("No se pudo modificar- " + cadSql);
+                }
                 else
-                    MessageBox.Show("No se pudo modificar");
+                {
+                    MessageBox.Show("No se pudo modificar- ");
+
+                }
+
             }
         }
     }
