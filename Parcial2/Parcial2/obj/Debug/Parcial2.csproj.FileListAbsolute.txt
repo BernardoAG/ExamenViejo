@@ -1,0 +1,11 @@
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\bin\Debug\Parcial2.exe.config
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\bin\Debug\Parcial2.exe
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\bin\Debug\Parcial2.pdb
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\bin\Debug\GestorBD.dll
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\bin\Debug\GestorBD.pdb
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\obj\Debug\Parcial2.csprojResolveAssemblyReference.cache
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\obj\Debug\Parcial2.Form1.resources
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\obj\Debug\Parcial2.Properties.Resources.resources
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\obj\Debug\Parcial2.csproj.GenerateResource.Cache
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\obj\Debug\Parcial2.exe
+C:\Users\BALTAMIRG\ExamenViejo\Parcial2\Parcial2\obj\Debug\Parcial2.pdb
